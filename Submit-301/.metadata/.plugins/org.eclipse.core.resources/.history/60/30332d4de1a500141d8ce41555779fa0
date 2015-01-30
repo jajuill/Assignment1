@@ -1,0 +1,10 @@
+package com.example.assignment1.test;
+
+import junit.framework.TestCase;
+
+public class ClaimListTest extends TestCase {
+	public void testClaimList() {
+		ClaimList claimList = new ClaimList();
+		Collection claim = claimList
+	}
+}

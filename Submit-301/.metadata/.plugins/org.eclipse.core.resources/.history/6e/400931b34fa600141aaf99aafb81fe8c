@@ -1,0 +1,15 @@
+package com.example.assignment1.test;
+
+import java.util.Collection;
+
+import com.example.assignment1.Claim;
+
+import junit.framework.TestCase;
+
+public class ClaimListTest extends TestCase {
+	public void testClaimList() {
+		ClaimList claimList = new ClaimList(); //he imported this... I cannot
+		Collection<Claim> claim = claimList.getClaim();
+		assertTrue("Empty Student List", claim.size() == 0); //can use == because int and not obj
+	}
+}

@@ -1,0 +1,9 @@
+package com.example.assignment1;
+
+public class Claim {
+
+	public Claim(String claimName) {
+		// TODO Auto-generated constructor stub
+	}
+
+}

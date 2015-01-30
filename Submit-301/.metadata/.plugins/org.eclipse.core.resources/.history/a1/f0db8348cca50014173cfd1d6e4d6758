@@ -1,0 +1,11 @@
+package com.example.assignment1.test;
+
+import com.example.assignment1.Claim;
+import junit.framework.TestCase;
+
+public class ClaimTest extends TestCase {
+	public void testStudent() {
+		Claim claim = new Claim("A Claim");
+		
+	}
+}

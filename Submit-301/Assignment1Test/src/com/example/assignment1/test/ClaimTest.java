@@ -1,0 +1,12 @@
+package com.example.assignment1.test;
+
+import com.example.assignment1.Claim;
+import junit.framework.TestCase;
+
+public class ClaimTest extends TestCase {
+	public void testClaim() {
+		String claimName = "Claim 1";
+		Claim claim = new Claim(claimName);
+		assertTrue("Claim name is not equal", claimName.equals(claim.getName()));
+	}
+}
