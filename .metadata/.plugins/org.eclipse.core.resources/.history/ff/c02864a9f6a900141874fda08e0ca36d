@@ -1,0 +1,51 @@
+package com.example.assignment1;
+
+import java.util.ArrayList;
+
+import com.example.assignment1.Item;
+public class ItemList {
+	
+	protected ArrayList<Item> itemList;
+	protected ArrayList<Expenses> expenseList;
+	public ItemList() {
+		itemList = new ArrayList<Item>();
+		expenseList = new ArrayList<Expenses>();
+	}
+	Item tempItem;
+	//found from http://www.vogella.com/tutorials/AndroidListView/article.html
+	public ArrayList<String> getItemList(){
+		final ArrayList<String> listNames = new ArrayList<String>();
+		for(int i=0;i<itemList.size();i++){ //how can I have 2 versions of itemList that work in different objects?
+			listNames.add((itemList.get(i)).getName());
+		}
+		return listNames;
+	}
+	public void changeItemName(String newName, String newDate, String newCurrency, double newCost, String newDescription){//pointless... just realized now
+		itemList.get(itemList.indexOf(tempItem)).changeName(newName, newDate, newCurrency, newCost, newDescription);//should have just returned item
+	}
+	public void addItem(Item myItem) {
+		itemList.add(myItem);
+	}
+
+	private void changeExpense(double value, String curr){//need to check expense string
+		for(int i=0;i<expenseList.size();i++){
+			if (expenseList.get(i).getCurrency() == curr){
+				expenseList.get(i).changeTotalExpense(value);
+			}
+		}
+		
+	}
+	
+	public void removeItem() {
+		itemList.remove(tempItem);
+	}
+
+	public Item getItem(int index) {
+		return itemList.get(index);
+	}
+	public void setItemChoice(Item o) { //Oject should be Item
+		tempItem = o; //returns index value of Item selected
+	}
+
+		
+}

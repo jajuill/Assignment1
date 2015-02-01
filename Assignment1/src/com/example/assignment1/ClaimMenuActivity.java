@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 
 public class ClaimMenuActivity extends Activity {
 
@@ -17,6 +18,7 @@ public class ClaimMenuActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.claim_data);
+		updateItemList(null);
 	}
 
 	@Override
@@ -25,18 +27,33 @@ public class ClaimMenuActivity extends Activity {
 		getMenuInflater().inflate(R.menu.claim_menu, menu);
 		return true;
 	}
-
+	//Radio buttons from http://www.mkyong.com/android/android-radio-buttons-example/
+	public void toMain(MenuItem menu){
+		Intent intent = new Intent(ClaimMenuActivity.this, MainActivity.class);
+		startActivity(intent);
+	}
 	public void editClaimGo(View v){
+		if (Globals.claimList.getClaim().getClaimStatus() == 1 || Globals.claimList.getClaim().getClaimStatus() == 3)
+			Toast.makeText(getBaseContext(),"Cannot edit, claim is submitted or approved",Toast.LENGTH_SHORT).show();
+		else{
 		Intent intent = new Intent(ClaimMenuActivity.this, EditClaimActivity.class);
 		startActivity(intent);
+		}
 	}
 	
 	public void addItemGo(View v){
+		if (Globals.claimList.getClaim().getClaimStatus() == 1 || Globals.claimList.getClaim().getClaimStatus() == 3)
+			Toast.makeText(getBaseContext(),"Cannot edit, claim is submitted or approved",Toast.LENGTH_SHORT).show();
+		else{
 		Intent intent = new Intent(ClaimMenuActivity.this, AddItemActivity.class);
 		startActivity(intent);
+		}
 	}
 	
-	public void updateItemList(View v){
+	public void updateItemList(View v){//View v
+		ArrayAdapter<String> expenseAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Globals.claimList.getClaim().getItemList().getExpenseList());//unfinished
+		final ListView expenseListView = (ListView) (findViewById(R.id.expensesList));
+		expenseListView.setAdapter(expenseAdapter);
 		//ArrayAdapter found here https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
 		ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Globals.claimList.getClaimItemList().getItemList());//unfinished
 		final ListView listView1 = (ListView) (findViewById(R.id.itemListView));
@@ -46,10 +63,25 @@ public class ClaimMenuActivity extends Activity {
 	        @Override
 	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 	        	Globals.claimList.getClaimItemList().setItemChoice(Globals.claimList.getClaimItemList().getItem(position)); //changes tempItem in ItemList to clicked claim   of you couldn't tell that from the line
-	     		Intent intent = new Intent(ClaimMenuActivity.this, AddItemActivity.class);
+	     		Intent intent = new Intent(ClaimMenuActivity.this, EditItemActivity.class);
 	    		startActivity(intent);
 	        }
 	    });
+	}
+	
+	public void updateSubmission(View v){
+		if (Globals.claimList.getClaim().getClaimStatus() == 0 || Globals.claimList.getClaim().getClaimStatus() == 3){
+			Globals.claimList.getClaim().changeStatus(1);
+			Toast.makeText(getBaseContext(),"Claim Submitted",Toast.LENGTH_SHORT).show();
+		}
+		else if (Globals.claimList.getClaim().getClaimStatus() == 1){//0:in progress,1:submitted,2:returned,3:approved
+			Globals.claimList.getClaim().changeStatus(2);
+			Toast.makeText(getBaseContext(),"Claim Returned",Toast.LENGTH_SHORT).show();
+		}
+		else if (Globals.claimList.getClaim().getClaimStatus() == 2){//0:in progress,1:submitted,2:returned,3:approved
+			Globals.claimList.getClaim().changeStatus(3);
+			Toast.makeText(getBaseContext(),"Claim Approved",Toast.LENGTH_SHORT).show();
+		}
 	}
 	
 	@Override

@@ -1,0 +1,90 @@
+package com.example.assignment1;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+public class ClaimMenuActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.claim_data);
+		updateItemList(null);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.claim_menu, menu);
+		return true;
+	}
+	//Radio buttons from http://www.mkyong.com/android/android-radio-buttons-example/
+	public void toMain(MenuItem menu){
+		Intent intent = new Intent(ClaimMenuActivity.this, MainActivity.class);
+		startActivity(intent);
+	}
+	public void editClaimGo(View v){
+		Intent intent = new Intent(ClaimMenuActivity.this, EditClaimActivity.class);
+		startActivity(intent);
+	}
+	
+	public void addItemGo(View v){
+		Intent intent = new Intent(ClaimMenuActivity.this, AddItemActivity.class);
+		startActivity(intent);
+	}
+	
+	public void updateItemList(View v){//View v
+		//ArrayAdapter found here https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
+		ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Globals.claimList.getClaimItemList().getItemList());//unfinished
+		final ListView listView1 = (ListView) (findViewById(R.id.itemListView));
+		listView1.setAdapter(itemsAdapter);
+		listView1.setClickable(true);
+		listView1.setOnItemClickListener(new OnItemClickListener() {//find shit out
+	        @Override
+	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+	        	Globals.claimList.getClaimItemList().setItemChoice(Globals.claimList.getClaimItemList().getItem(position)); //changes tempItem in ItemList to clicked claim   of you couldn't tell that from the line
+	     		Intent intent = new Intent(ClaimMenuActivity.this, EditItemActivity.class);
+	    		startActivity(intent);
+	        }
+	    });
+	}
+	
+	public void updateSubmission(View v){
+		if (Globals.claimList.getClaim().getClaimStatus() == 0 || Globals.claimList.getClaim().getClaimStatus() == 3){
+			Globals.claimList.getClaim().changeStatus(1);
+			Toast.makeText(getBaseContext(),"Claim Submitted",Toast.LENGTH_SHORT).show();
+		}
+		else if (Globals.claimList.getClaim().getClaimStatus() == 1){//0:in progress,1:submitted,2:returned,3:approved
+			Globals.claimList.getClaim().changeStatus(2);
+			Toast.makeText(getBaseContext(),"Claim Returned",Toast.LENGTH_SHORT).show();
+		}
+		else if (Globals.claimList.getClaim().getClaimStatus() == 2){//0:in progress,1:submitted,2:returned,3:approved
+			Globals.claimList.getClaim().changeStatus(3);
+			Toast.makeText(getBaseContext(),"Claim Approved",Toast.LENGTH_SHORT).show();
+		}
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+}

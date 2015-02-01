@@ -1,0 +1,25 @@
+package com.example.assignment1;
+
+import java.util.ArrayList;
+
+
+public class Expenses {
+	
+	double value;
+	String currencyType;
+	
+	public Expenses(String newCurrency,double newValue){
+	currencyType = newCurrency;
+	value = newValue;
+	}
+	public String getCurrency(){
+		return currencyType;
+	}
+	public double getValue(){
+		return value;
+	}
+	public void changeTotalExpense(double valueChange){
+		value += valueChange;
+	}
+	
+}

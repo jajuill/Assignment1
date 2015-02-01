@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Edit Item"
+        android:text="New Item"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -75,23 +75,15 @@
         android:inputType="date" />
 
     <Button
-        android:id="@+id/deleteItemButton"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/addingItemText"
-        android:text="Delete Item" />
-
-    <Button
         android:id="@+id/keepItemButton"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/addingItemText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:onClick="addAnItem"
-        android:text="Keep Item" />
+        android:text="Add Item" />
 
     <EditText
         android:id="@+id/costInput"

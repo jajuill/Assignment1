@@ -1,6 +1,7 @@
 package com.example.assignment1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,8 +28,8 @@ public class AddClaimActivity extends Activity {
 		String claimName = input.getText().toString(); //convert to string
 		Claim claim = new Claim(claimName);
 		Globals.claimList.addClaim(claim);
-		//Intent intent = new Intent(AddClaimActivity.this, MainActivity.class);
-		//startActivity(intent);//button press takes back to main
+		Intent intent = new Intent(AddClaimActivity.this, MainActivity.class);
+		startActivity(intent);//button press takes back to main
 	}
 
 

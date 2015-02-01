@@ -38,6 +38,14 @@
             android:name=".AddItemActivity"
             android:label="@string/title_activity_add_item" >
         </activity>
+        <activity
+            android:name=".EditItemActivity"
+            android:label="@string/title_activity_edit_item" >
+        </activity>
+        <activity
+            android:name=".RadioButtonActivity"
+            android:label="@string/title_activity_radio_button" >
+        </activity>
     </application>
 
 </manifest>

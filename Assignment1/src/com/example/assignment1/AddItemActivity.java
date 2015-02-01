@@ -31,10 +31,10 @@ public class AddItemActivity extends Activity {
 		EditText currency = (EditText)findViewById(R.id.currencyInput); 
 		String itemCurrency = currency.getText().toString(); 
 		EditText cost = (EditText)findViewById(R.id.costInput); 
-		String itemCost = cost.getText().toString(); //NEED TO CHANGE TO INT REMEMBER TO CHANGE TO INT
+		int itemCost = Integer.parseInt(cost.getText().toString()); //NEED TO CHANGE TO INT REMEMBER TO CHANGE TO INT
 		EditText description = (EditText)findViewById(R.id.descriptionInput1);
 		String itemDescription = description.getText().toString();
-		Item item = new Item(itemName,itemDate,itemCurrency,1,itemDescription);
+		Item item = new Item(itemName,itemDate,itemCurrency,itemCost,itemDescription);
 		Globals.claimList.getClaimItemList().addItem(item);
 		Intent intent = new Intent(AddItemActivity.this, ClaimMenuActivity.class);
 		startActivity(intent);//button press takes back to main

@@ -1,7 +1,5 @@
 package com.example.assignment1;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,16 +8,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		updateClaimList(null);
 	}
 
 	@Override
@@ -29,7 +26,7 @@ public class MainActivity extends Activity {
 		return true;
 	}
 	
-	public void addAClaim(MenuItem menu){
+	public void addAClaim(View v){
 		Intent intent = new Intent(MainActivity.this, AddClaimActivity.class);
 		startActivity(intent);
 	}
@@ -44,8 +41,7 @@ public class MainActivity extends Activity {
 	        @Override
 	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 	        	//Object o = listView.getItemAtPosition(position);
-	        	Globals.claimList.setClaimChoice(Globals.claimList.getClaim(position)); //changes tempClaim in ClaimList to clicked claim
-	        	String str = ""+position;
+	        	Globals.claimList.setClaimChoice(Globals.claimList.getClaimPosition(position)); //changes tempClaim in ClaimList to clicked claim
 	        	//Toast.makeText(getBaseContext(),str,Toast.LENGTH_SHORT).show();
 	     		Intent intent = new Intent(MainActivity.this, ClaimMenuActivity.class);
 	    		startActivity(intent);
@@ -56,8 +52,6 @@ public class MainActivity extends Activity {
 	}
 	
 
-	
-	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will

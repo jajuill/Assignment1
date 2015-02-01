@@ -32,11 +32,13 @@ public class ClaimList {
 	public void removeClaim() {
 		claimList.remove(tempClaim);
 	}
-
-	public Claim getClaim(int index) {
+	public Claim getClaim(){
+		return claimList.get(claimList.indexOf(tempClaim));
+	}
+	public Claim getClaimPosition(int index) {
 		return claimList.get(index);
 	}
-	public ItemList getClaimItemList(){
+	public ItemList getClaimItemList(){//a little unnecessary
 		return claimList.get(claimList.indexOf(tempClaim)).getItemList();
 	}
 	public void setClaimChoice(Claim o) { //Oject should be Claim

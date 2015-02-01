@@ -1,0 +1,37 @@
+package com.example.assignment1;
+
+public class Item {
+	protected String itemName;
+	protected String itemDate;
+	protected String itemCurrency;
+	protected int itemCost;
+	protected String itemDescription;
+	
+	public Item(String itemName2, String itemDate2, String itemCurrency2, int itemCost2, String itemDescription2) {
+		this.itemName = itemName2;
+		this.itemDate = itemDate2;
+		this.itemCurrency = itemCurrency2;
+		this.itemCost = itemCost2;
+		this.itemDescription = itemDescription2;
+	}
+
+	public void changeName(String newName, String newDate, String newCurrency, int newCost, String newDescription) {
+		if (newName != null)
+			itemName = newName;
+		if (newDate != null)
+			itemDate = newDate;
+		if (newCurrency != null)
+			itemCurrency = newCurrency;
+		if (newCost != -1)
+			itemCost = newCost;
+		if (newDescription != null)
+			itemDescription = newDescription;
+		
+	}
+
+	public String getName() {//why return object and not string?
+		String str = new String("");
+		str = (""+itemName+" - "+itemCurrency+" "+itemCost);
+		return str; //apparently the "this" is optional
+	}
+}

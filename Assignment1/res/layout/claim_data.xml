@@ -18,16 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="Submit Claim" />
-
-    <TextView
-        android:id="@+id/expensesText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/submitClaimButton"
-        android:layout_alignLeft="@+id/claimTitle"
-        android:layout_marginBottom="101dp"
-        android:text="Expenses" />
+        android:onClick="updateSubmission"
+        android:text="Update Submission" />
 
     <ListView
         android:id="@+id/itemListView"
@@ -40,32 +32,40 @@
     </ListView>
 
     <Button
-        android:id="@+id/editClaimButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/expensesText"
-        android:layout_toRightOf="@+id/claimTitle"
-        android:onClick="editClaimGo"
-        android:text="Edit Claim" />
-
-    <Button
         android:id="@+id/addItemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/claimTitle"
-        android:layout_marginLeft="26dp"
-        android:layout_toRightOf="@+id/expensesText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:onClick="addItemGo"
         android:text="Add Item" />
 
     <Button
-        android:id="@+id/updateItemList"
+        android:id="@+id/editClaimButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/addItemButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="editClaimGo"
+        android:text="Edit Claim" />
+
+    <TextView
+        android:id="@+id/expensesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/submitClaimButton"
+        android:layout_alignRight="@+id/claimTitle"
+        android:layout_marginBottom="149dp"
+        android:text="Expenses" />
+
+    <ListView
+        android:id="@+id/expensesList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/submitClaimButton"
         android:layout_alignParentLeft="true"
-        android:onClick="updateItemList"
-        android:text="Update" />
+        android:layout_alignTop="@+id/expensesText" >
+
+    </ListView>
 
 </RelativeLayout>

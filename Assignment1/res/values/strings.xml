@@ -8,5 +8,7 @@
     <string name="title_activity_edit_claim">Edit Claim Activity</string>
     <string name="title_activity_claim_menu">ClaimMenuActivity</string>
     <string name="title_activity_add_item">AddItemActivity</string>
+    <string name="title_activity_edit_item">EditItemActivity</string>
+    <string name="title_activity_radio_button">RadioButtonActivity</string>
 
 </resources>
