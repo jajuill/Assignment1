@@ -5,5 +5,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_claim">Add Claim</string>
+    <string name="title_activity_edit_claim">Edit Claim Activity</string>
+    <string name="title_activity_claim_menu">ClaimMenuActivity</string>
+    <string name="title_activity_add_item">AddItemActivity</string>
 
 </resources>

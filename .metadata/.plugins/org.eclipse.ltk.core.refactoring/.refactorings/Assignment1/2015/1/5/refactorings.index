@@ -18,3 +18,11 @@
 1422382043893	Delete element
 1422502235952	Rename field 'editText1'
 1422502271748	Rename field 'typeClaim'
+1422662756321	Rename method 'testClaim'
+1422674318227	Rename field 'itemList'
+1422674411312	Rename field 'listView1'
+1422686371757	Delete element
+1422689528357	Delete element
+1422689546750	Delete element
+1422692378602	Delete element
+1422743702360	Rename method 'getClaim'

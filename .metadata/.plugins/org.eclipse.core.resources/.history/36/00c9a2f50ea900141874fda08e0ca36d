@@ -1,0 +1,77 @@
+package com.example.assignment1;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.app.ListActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class AddClaimActivity extends Activity {
+	//got context from http://stackoverflow.com/questions/10996479/how-to-update-a-textview-of-an-activity-from-another-class
+	//got latest context from http://stackoverflow.com/questions/6030982/android-how-to-access-activity-ui-from-my-class
+	protected MainActivity context;
+    public void makeContext(MainActivity _context){
+        context = _context;
+    }
+	/*//couldn't get ArrayAdapter to work  :(
+	public void onCreate(){//OnCreate can take variables maybe used for saved data, eg; onCreate(Bundle saveInstanceState)
+		setContentView(R.id.claimListView);
+		}
+	*/
+	ClaimList claimList = new ClaimList(); //need put in new file?
+			
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.add_claim_data);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.add_claim, menu);
+		return true;
+	}
+	
+	public void addAClaim(View v){ //GET TEXT FROM BUTTON PRESS!!!!
+		EditText input = (EditText)findViewById(R.id.addClaimInput); //taking from text input 
+		String claimName = input.getText().toString(); //convert to string
+		Claim claim = new Claim(claimName);
+		claimList.addClaim(claim);
+		//Intent intent = new Intent(AddClaimActivity.this, MainActivity.class);
+		//startActivity(intent);//button press takes back to main
+		updateClaimList();
+		/*
+		Toast toast = Toast.makeText(this, Integer.toString(claimList.countClaim()), Toast.LENGTH_SHORT);
+		toast.show(); //counts amt of claims
+		*/
+	}
+	public void updateClaimList(){ //should this be here>>>?
+		//ArrayAdapter found here https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
+		ArrayList<String> listNames = new ArrayList<String>();
+		listNames = claimList.getClaimList();
+		ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listNames);//unfinished
+		ListView listView = (ListView) (context.findViewById(R.id.claimListView));
+		listView.setAdapter(itemsAdapter);
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+}

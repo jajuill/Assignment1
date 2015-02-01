@@ -26,6 +26,18 @@
             android:name=".AddClaimActivity"
             android:label="@string/title_activity_add_claim" >
         </activity>
+        <activity
+            android:name=".EditClaimActivity"
+            android:label="@string/title_activity_edit_claim" >
+        </activity>
+        <activity
+            android:name=".ClaimMenuActivity"
+            android:label="@string/title_activity_claim_menu" >
+        </activity>
+        <activity
+            android:name=".AddItemActivity"
+            android:label="@string/title_activity_add_item" >
+        </activity>
     </application>
 
 </manifest>

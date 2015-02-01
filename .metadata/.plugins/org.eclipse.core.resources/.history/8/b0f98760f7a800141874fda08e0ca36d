@@ -1,0 +1,46 @@
+package com.example.assignment1;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class AddClaimActivity extends Activity {
+	ClaimList claimList = new ClaimList(); //need put in new file?
+			
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.add_claim_data);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.add_claim, menu);
+		return true;
+	}
+	
+	public void addAClaim(View v){ //GET TEXT FROM BUTTON PRESS!!!!
+		EditText input = (EditText)findViewById(R.id.addClaimInput); //taking from text input 
+		String claimName = input.getText().toString(); //convert to string
+		Claim claim = new Claim(claimName);
+		claimList.addClaim(claim);
+		Toast toast = Toast.makeText(this, claimList.countClaim(), Toast.LENGTH_SHORT);
+		toast.show();
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+}

@@ -1,0 +1,23 @@
+package com.example.assignment1;
+
+public class Item {
+	protected String itemName; //whatever inherits this can use it
+	
+	public Item(String itemName) {
+		this.itemName = itemName;
+	}
+	public void setItemInfo(String name, String date, String currency, int cost, String description){
+		String itemName = name;
+		String itemDate = date;
+		String itemCurrency = currency;
+		int itemCost = cost;
+		String itemDescription = description;
+	}
+	public void changeName(String newName){
+		itemName = newName;
+	}
+
+	public Object getName() {//why return object and not string?
+		return this.itemName; //apparently the "this" is optional
+	}
+}

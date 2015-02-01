@@ -1,0 +1,14 @@
+package com.example.assignment1;
+
+import java.util.ArrayList;
+
+public class ItemList extends ClaimList {
+
+	public ItemList() {
+		itemList1 = new ArrayList<Item>();
+	}
+	@Override
+	public ClaimList() {
+		itemList1 = new ArrayList<Item>();
+	}
+}

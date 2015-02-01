@@ -1,37 +1,49 @@
 package com.example.assignment1;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import com.example.assignment1.Claim;
 
 public class ClaimList {
+	
 
 	protected ArrayList<Claim> claimList;
 	
 	public ClaimList() {
 		claimList = new ArrayList<Claim>();
 	}
-	
-	public Collection<Claim> getClaim() { //Collection<Claim>  brackets mean of type Collection but has Claim parameter (type)
-		return claimList;
+	Claim tempClaim;//best way to pass claim object.  SHOULD BE CLAIM NOT OBJ ..but works anyways
+	//found from http://www.vogella.com/tutorials/AndroidListView/article.html
+	public ArrayList<String> getClaimList(){
+		final ArrayList<String> listNames = new ArrayList<String>();
+		//listNames.addAll(claimList); //need collection for this
+		for(int i=0;i<claimList.size();i++){ //how can I have 2 versions of claimList that work in different objects?
+			listNames.add((String) (claimList.get(i)).getName());
+		}
+		return listNames;//WORKS!
+	}
+	public void changeClaimName(String newClaimName){
+		claimList.get(claimList.indexOf(tempClaim)).changeName(newClaimName);
+	}
+	public void addClaim(Claim myClaim) {//didn't need to fill in until it's shown that test doesn't pass
+		claimList.add(myClaim);
 	}
 
-	public void addClaim(Claim testClaim) {//didn't need to fill in until it's shown that test doesn't pass
-		claimList.add(testClaim);
+	public void removeClaim() {
+		claimList.remove(tempClaim);
 	}
 
-	public void removeClaim(Claim testClaim) {
-		claimList.remove(testClaim);
+	public Claim getClaim(int index) {
+		return claimList.get(index);
+	}
+	public ItemList getClaimItemList(){
+		return claimList.get(claimList.indexOf(tempClaim)).getItemList();
+	}
+	public void setClaimChoice(Claim o) { //Oject should be Claim
+		tempClaim = o; //returns index value of claim selected
+	}
+
 		
-	}
-
-	public Claim chooseClaim() {
-		return claimList.get(0);
-	}
-
-		
-		
-	}
+}
 
 

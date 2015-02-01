@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ClaimListTest" project="Assignment1Test" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="com.example.assignment1.test.ClaimListTest" time="0.001">
+    <testcase name="testRemoveClaim" classname="com.example.assignment1.test.ClaimListTest" time="0.0"/>
+    <testcase name="testChooseClaimList" classname="com.example.assignment1.test.ClaimListTest" time="0.0"/>
+    <testcase name="testEmptyClaimList" classname="com.example.assignment1.test.ClaimListTest" time="0.0"/>
+    <testcase name="testAddClaimList" classname="com.example.assignment1.test.ClaimListTest" time="0.0"/>
+  </testsuite>
+</testrun>

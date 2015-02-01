@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
-public class AddClaimActivity extends Activity {
-
+public class AddClaimActivity extends Activity {	
+			
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,7 +21,18 @@ public class AddClaimActivity extends Activity {
 		getMenuInflater().inflate(R.menu.add_claim, menu);
 		return true;
 	}
+	
+	public void addAClaim(View v){ //GET TEXT FROM BUTTON PRESS!!!!
+		EditText input = (EditText)findViewById(R.id.addClaimInput); //taking from text input 
+		String claimName = input.getText().toString(); //convert to string
+		Claim claim = new Claim(claimName);
+		Globals.claimList.addClaim(claim);
+		//Intent intent = new Intent(AddClaimActivity.this, MainActivity.class);
+		//startActivity(intent);//button press takes back to main
+	}
 
+
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will

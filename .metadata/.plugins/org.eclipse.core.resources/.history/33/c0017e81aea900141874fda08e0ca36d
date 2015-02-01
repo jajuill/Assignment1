@@ -1,0 +1,5 @@
+package com.example.assignment1;
+
+public class Globals {
+	public static ClaimList claimList = new ClaimList(); //need put in new file?
+}

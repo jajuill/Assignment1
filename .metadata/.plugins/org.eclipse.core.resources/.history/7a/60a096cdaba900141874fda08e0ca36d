@@ -1,0 +1,9 @@
+package com.example.assignment1;
+
+public class ItemList extends ClaimList {
+
+	public ItemList() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

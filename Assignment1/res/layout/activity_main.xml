@@ -23,10 +23,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/claimTitle"
-        android:text="Add" />
+        android:onClick="updateClaimList"
+        android:text="Update" />
 
     <ListView
-        android:id="@+id/itemList"
+        android:id="@+id/claimListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

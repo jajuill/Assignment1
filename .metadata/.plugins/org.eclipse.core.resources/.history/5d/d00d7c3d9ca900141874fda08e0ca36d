@@ -1,0 +1,59 @@
+package com.example.assignment1;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+
+
+
+
+import com.example.assignment1.Claim;
+
+public class ClaimList {
+	
+
+	protected ArrayList<Claim> claimList;
+	
+	public ClaimList() {
+		claimList = new ArrayList<Claim>();
+	}
+	int claimIndex = 0;//holds position of claim in quesion
+	/*
+	public Collection<Claim> getClaim() { //Collection<Claim>  brackets mean of type Collection but has Claim parameter (type)
+		return claimList;
+	}
+	*/
+	//found from http://www.vogella.com/tutorials/AndroidListView/article.html
+	public ArrayList<String> getClaimList(){
+		final ArrayList<String> listNames = new ArrayList<String>();
+		for(int i=0;i<claimList.size();i++){ //how can I have 2 versions of claimList that work in different objects?
+			listNames.add((String) (claimList.get(i)).getName());
+		}
+		return listNames;//WORKS!
+	}
+	
+	public Claim getClaimName(){//do I even use this?
+		return  claimList.get(claimIndex).getName();
+	}
+	public void changeClaimName(String newClaimName){
+		claimList.get(claimIndex).changeName(newClaimName);
+	}
+	public void addClaim(Claim myClaim) {//didn't need to fill in until it's shown that test doesn't pass
+		claimList.add(myClaim);
+	}
+
+	public void removeClaim(Claim myClaim) {
+		claimList.remove(myClaim);
+	}
+
+	public Claim chooseClaim(String name) {//needs fixing
+		return claimList.get(0);
+	}
+	public void setClaimIndex(Object o) {
+		claimIndex = claimList.indexOf(o); //returns index value of claim selected
+	}
+
+		
+}
+
+
