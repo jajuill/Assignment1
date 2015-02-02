@@ -74,6 +74,7 @@ public class ItemList {
 		return listNames;
 	}
 	public void removeItem() {
+		changeExpense((itemList.get(itemList.indexOf(tempItem)).getCost())*-1,itemList.get(itemList.indexOf(tempItem)).getCurrency());
 		itemList.remove(tempItem);
 	}
 

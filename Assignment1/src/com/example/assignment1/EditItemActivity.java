@@ -49,6 +49,12 @@ public class EditItemActivity extends Activity {
 		getMenuInflater().inflate(R.menu.edit_item, menu);
 		return true;
 	}
+	
+	public void deleteItem(View v){
+		Globals.claimList.getClaimItemList().removeItem();
+		Intent intent = new Intent(EditItemActivity.this, ClaimMenuActivity.class);
+		startActivity(intent);//button press takes back
+	}
 
 	public void editAnItem(View v){ //GET TEXT FROM INPUT ON BUTTON PRESS!!!!
 		if (Globals.claimList.getClaim().getClaimStatus() == 1 || Globals.claimList.getClaim().getClaimStatus() == 3)//button doesn't work if status doesn't allow it
