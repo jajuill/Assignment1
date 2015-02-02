@@ -1,7 +1,5 @@
 package com.example.assignment1;
 
-import java.text.DecimalFormat;
-
 public class Item {
 	protected String itemName;
 	protected String itemDate;
@@ -38,9 +36,7 @@ public class Item {
 
 	public String getName() {//why return object and not string?
 		String str = new String("");
-		DecimalFormat df = new DecimalFormat("0.00##");
-		String stringValue = df.format(itemCost);
-		str = (""+itemName+": "+stringValue+" "+itemCurrency);
+		str = (""+itemName+": "+itemCost+" "+itemCurrency);
 		return str; //apparently the "this" is optional
 	}
 }

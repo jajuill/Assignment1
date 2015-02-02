@@ -18,8 +18,11 @@ public class ClaimMenuActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.claim_data);
+		if (Globals.claimList.getClaim().getClaimStatus() == 1 || Globals.claimList.getClaim().getClaimStatus() == 3)
+			Toast.makeText(getBaseContext(),"Cannot edit, claim is submitted or approved",Toast.LENGTH_SHORT).show();
+		else{
 		updateItemList(null);
-		
+		}
 	}
 
 	@Override

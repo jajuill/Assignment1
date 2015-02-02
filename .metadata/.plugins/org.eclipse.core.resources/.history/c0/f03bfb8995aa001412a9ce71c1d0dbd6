@@ -18,7 +18,7 @@ public class Expenses {
 	public String getValue(){
 		DecimalFormat df = new DecimalFormat("0.00##");
 		String stringValue = df.format(value);
-		return (stringValue+" "+currencyType);
+		return (String.format("%.2g%n", stringValue)+" "+currencyType);
 	}
 	public void changeTotalExpense(double valueChange){
 		value += valueChange;

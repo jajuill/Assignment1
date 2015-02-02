@@ -19,7 +19,6 @@ public class ClaimMenuActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.claim_data);
 		updateItemList(null);
-		
 	}
 
 	@Override
@@ -52,7 +51,6 @@ public class ClaimMenuActivity extends Activity {
 	}
 	
 	public void updateItemList(View v){//View v
-		
 		ArrayAdapter<String> expenseAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Globals.claimList.getClaim().getItemList().getExpenseList());//unfinished
 		final ListView expenseListView = (ListView) (findViewById(R.id.expensesList));
 		expenseListView.setAdapter(expenseAdapter);
@@ -60,6 +58,9 @@ public class ClaimMenuActivity extends Activity {
 		ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Globals.claimList.getClaimItemList().getItemList());//unfinished
 		final ListView listView1 = (ListView) (findViewById(R.id.itemListView));
 		listView1.setAdapter(itemsAdapter);
+		if (Globals.claimList.getClaim().getClaimStatus() == 1 || Globals.claimList.getClaim().getClaimStatus() == 3)
+			Toast.makeText(getBaseContext(),"Cannot edit, claim is submitted or approved",Toast.LENGTH_SHORT).show();
+		else{
 		listView1.setClickable(true);
 		listView1.setOnItemClickListener(new OnItemClickListener() {//find shit out
 	        @Override
@@ -69,6 +70,7 @@ public class ClaimMenuActivity extends Activity {
 	    		startActivity(intent);
 	        }
 	    });
+		}
 	}
 	
 	public void updateSubmission(View v){

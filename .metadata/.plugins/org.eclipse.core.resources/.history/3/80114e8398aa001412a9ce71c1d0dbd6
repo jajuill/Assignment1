@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 
 public class EditItemActivity extends Activity {
@@ -26,9 +25,6 @@ public class EditItemActivity extends Activity {
 	}
 
 	public void editAnItem(View v){ //GET TEXT FROM BUTTON PRESS!!!!
-		if (Globals.claimList.getClaim().getClaimStatus() == 1 || Globals.claimList.getClaim().getClaimStatus() == 3)
-			Toast.makeText(getBaseContext(),"Cannot edit, claim is submitted or approved",Toast.LENGTH_SHORT).show();
-		else{
 		EditText name = (EditText)findViewById(R.id.editNameInput); 
 		String itemName = name.getText().toString(); 
 		EditText date = (EditText)findViewById(R.id.editDateInput2); 
@@ -48,7 +44,7 @@ public class EditItemActivity extends Activity {
 		Intent intent = new Intent(EditItemActivity.this, ClaimMenuActivity.class);
 		startActivity(intent);//button press takes back to main 
 	}
-	}
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will

@@ -1,7 +1,5 @@
 package com.example.assignment1;
 
-import java.text.DecimalFormat;
-
 
 public class Expenses {
 	
@@ -16,9 +14,7 @@ public class Expenses {
 		return currencyType;
 	}
 	public String getValue(){
-		DecimalFormat df = new DecimalFormat("0.00##");
-		String stringValue = df.format(value);
-		return (stringValue+" "+currencyType);
+		return (String.format("%.2g%n", value)+" "+currencyType);
 	}
 	public void changeTotalExpense(double valueChange){
 		value += valueChange;
