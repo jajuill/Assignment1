@@ -4,5 +4,5 @@ My First app!
 It's a little rough and don't save sata upon exit,
 nor does it have the E-mail capabilities.
 And if a user attempts to put blank information into any of
-the inputs, the app will crash :(
+the cost inputs, the app will crash :(
 
